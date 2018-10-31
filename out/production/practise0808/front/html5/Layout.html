@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区域布局和创表</title>
+</head>
+<body>
+    <div id="container" style="background-color: #99ff99; width: 600px" align="center">
+        <div id="header" style="background-color: darkgrey">
+            <h1>第一部分：区域布局</h1>
+        <h1 style="margin-bottom: 0; background-color: darkgoldenrod">这是一个在div块中的标题</h1>
+        <p>这是在一个div块中的段落</p>
+
+        <div id="leftmenu" style="background-color: yellow;width: 100px;height: 500px;float: left">
+            <b>菜单</b><br>
+            HTML5<br>
+            CSS<br>
+            JavaScript<br>
+        </div>
+        <div id="content" style="background-color: #EEEEEE;width: 500px;height: 200px;float: left">
+           <b>显示文本内容</b><br>
+            1.浅绿色为最大的div块(最外层的div块，包含所有其他div块部分)<br>
+            2.灰白色为第二大div块(嵌套在浅绿色div块，但不包含版权部分)<br>
+            3.正黄色为嵌套在灰白色内部的div块(和本文字部分属于同级div块)<br>
+        </div>
+        </div>
+        <div id="footer" style="background-color: #2f889a ; text-align: center;clear: both">
+            版权 © runoob.com
+        </div>
+    </div>
+    <div id="creattable" style="background-color: darkkhaki">
+        <h1>第2部分：区域创表</h1>
+        <table width="500" border="1">
+            <tr >
+                <td colspan="2" style="background-color:#FFA500;"><h1>主要的网页标题</h1></td>
+            </tr>
+            <tr>
+                <td style="background-color:#FFD700;width: 100px">
+                    <b>菜单</b><br>
+                    HTML<br>
+                    CSS<br>
+                    JavaScript
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#eeeeee;height: 200px;width: 400px">
+                    内容在这里显示
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#3599ae;text-align: center">
+                    最终解释权归个人所有 © flash.alex.chen
+                </td>
+            </tr>
+        </table>
+    </div>
+    <p>我的偶像有 <span style="color:blue">蓝色</span> 的眼睛👀</p>
+</body>
+</html>

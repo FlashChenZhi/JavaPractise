@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScriptObject JS对象的应用</title>
+</head>
+<body>
+    <div id="demo">
+    </div>
+    <p>JS函数参数中，变量和参数必须以一致的顺序出现</p>
+    <div id="div1">
+        <button onclick="myFunction(person2.姓名,person2.公司)">调用方法</button>
+        <button onclick="myFunction(person3.姓名,person3.公司)">传参函数</button><br/>
+        <p id="p1">本例调用的函数会执行一个计算，然后返回结果：</p>
+    </div>
+    <p>关于全局变量和局部变量的声明以及使用</p>
+
+</body>
+<script>
+    var person1={
+        编号: 1 ,
+        姓名:"马云",
+        性别:"男",
+        地址:"浙江省杭州市",
+        公司:"阿里巴巴",
+        职位:"主席",
+        品牌:function () {
+            return this.公司+" 旗下子公司：淘宝，支付宝以及天猫";
+        }
+    };
+    var person2={
+        编号: 2 ,
+        姓名:"马化腾",
+        性别:"男",
+        地址:"广东省深圳市",
+        公司:"腾讯集团",
+        职位:"CEO"
+    };
+    var person3={
+        编号: 3 ,
+        姓名:"董明珠",
+        性别:"女",
+        地址:"山东省青岛市",
+        公司:"格力集团",
+        职位:"董事长"
+    };
+    document.getElementById("demo").innerHTML="姓名："+person1.姓名+"<br/>性别："+person1.性别+"<br/>职位："+person1.职位+"<br/>公司："+person1.品牌()+"<br/>地址："+person1.地址;
+    function myFunction(name,job) {
+        return alert(name+" 来自于："+job);
+    }
+    function sum(a,b) {
+        return a*b;
+    }
+    document.getElementById("p1").innerHTML+=sum(36,2);
+</script>
+<script>
+    var car=new Array();
+    car[0]="Volvo";
+    car[1]="BMW";
+    car[2]="Audi";
+    if(Array.isArray(car)){
+        console.log("该对象是一个数组");
+    }
+    var animal=new Object();
+    animal.name="Cat";
+    animal.age=3;
+    animal.color="black";
+    if(animal instanceof Array){
+        console.log("该对象是一个数组")
+    }else if(animal instanceof Object){
+        console.log("该对象是一个Object对象")
+    }else{
+        console.log("该对象尚不明确！")
+    }
+    var x,y;
+    if(x==undefined){
+        console.log(x)
+    }
+    if(y==null){
+        console.log(y)
+    }
+    //上述的变量x,y均会输出为: undefined
+
+    var var1 = 1; // 不可配置全局属性
+    var2 = 2; // 没有使用 var 声明，可配置全局属性
+
+    console.log(this.var1); // 1
+    console.log(window.var1); // 1
+
+    delete var1; // false 无法删除
+    console.log(delete var1);
+    console.log(var1); //1
+
+    delete var2;
+    console.log(delete var2); // true
+    console.log(var2); // 已经删除 报错变量未定义
+
+</script>
+</html>

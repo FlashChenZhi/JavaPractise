@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" manifest="demo_html.appcache">
+<head>
+    <meta charset="UTF-8">
+    <title>Web应用程序缓存</title>
+</head>
+<body>
+<script type="text/javascript">
+    function getDateTime() {
+        setInterval("document.getElementById('timePara').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+    }
+</script>
+<p id="timePara"><button onclick="getDateTime()">获取日期和时间</button></p>
+<p><img src="../../images/picture/logo.png" width="336" height="69"></p>
+<p>尝试打开 <a href="http://www.runoob.com/" target="_blank">这个页面</a>
+    &nbsp;>&nbsp;>&nbsp;>&nbsp;>&nbsp;>&nbsp; 在离线的状态下重新载入这个页面，页面也可以访问...</p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+                                                                JavaScript JSON
+一、JSON 概念和作用
+1.概念：
+(1).JSON 是一种轻量级的数据交换格式
+(2).JSON是独立的语言，易于理解
+(3).JSON 比 XML 更小、更快，更易解析
+
+2.作用：
+(1).JSON 是用于存储和传输数据的格式
+(2).JSON 通常用于服务端向网页传递数据
+说明：* JSON 使用 JavaScript 语法，但是 JSON 格式仅仅是一个文本。
+        文本可以被任何编程语言读取及作为数据格式传递
+
+二、JSON 语法规则
+1. 数据为 键/值 对
+2. 数据由逗号分隔
+3. 大括号保存对象
+4. 方括号保存数组
+
+三、JSON 字符串转换为 JavaScript 对象
+1.首先，创建 JavaScript 字符串，字符串为 JSON 格式的数据
+2.然后，使用 JavaScript 内置函数 JSON.parse() 将字符串转换为 JavaScript 对象
+3.最后，在你的页面中使用新的 JavaScript 对象
+
+四、JSON 相关函数
+1.JSON.parse()：用于将一个 JSON 字符串转换为 JavaScript 对象
+2.eval() 函数： 可解析 JSON 文本，然后生成 JavaScript 对象    ( 必须把文本包围在括号中，这样才能避免语法错误 )
+  说明：该eval()方法还可用于自动判断传入变量，执行计算并赋值
+* 两者比较：parse()作为JSON解析器，解析速度更快，安全性比较高
+            eval ()不仅能识别 JSON 文本，而且会编译脚本
+3.JSON.stringify()：用于将 JavaScript 值转换为 JSON 字符串
+
+五、JSON 文件
+1. JSON 文件的文件类型是 ".json"
+2. JSON 文本的 MIME 类型是 "application/json"

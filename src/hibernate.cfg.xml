@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    <!--    数据库连接       -->
+        <!--
+        <property name="current_session_context_class">thread</property>
+        <property name="connection.url">jdbc:sqlserver://127.0.0.1:1433;DatabaseName=xiangqing</property>
+        <property name="connection.driver_class">com.jdbc.microsoft.sqlserver.SQLServerDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        -->
+        <property name="hibernate.connection.username">xiangqing</property>
+        <property name="connection.password">xiangqing</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+        <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
+        <!-- 配置C3P0 -->
+        <!-- 最大连接数 -->
+        <property name="hibernate.c3p0.max_size">30</property>
+        <!-- 最小连接数 -->
+        <property name="hibernate.c3p0.min_size">3</property>
+        <!-- 获得连接的超时时间,如果超过这个时间,会抛出异常，单位毫秒 -->
+        <property name="hibernate.c3p0.timeout">30</property>
+        <!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 -->
+        <property name="hibernate.c3p0.acquire_increment">1</property>
+        <!--<property name="hibernate.show_sql">true</property>-->
+        <mapping class="com.domain.Pet"/>
+        <mapping class="com.domain.Order"/>
+        <mapping class="com.domain.OrderItem"/>
+        <mapping class="com.domain.Product"/>
+        <mapping class="com.domain.User"/>
+    </session-factory>
+</hibernate-configuration>

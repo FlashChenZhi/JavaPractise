@@ -1,0 +1,71 @@
+                                                Web SQL 数据库
+一、核心方法
+1. openDatabase：这个方法使用现有的数据库或者新建的数据库创建一个数据库对象
+   打开/创建数据库：openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024)
+   方法中对应参数意义：
+   <1>.数据库名称
+   <2>.版本号
+   <3>.描述文本
+   <4>.数据库大小
+   <5>.创建回调
+   说明：第五个参数，创建回调会在创建数据库后被调用
+
+2. transaction： 这个方法让我们能够控制一个事务，以及基于这种情况执行提交或者回滚
+   执行查询操作：database.transaction()
+
+3. executeSql：  这个方法用于执行实际的 SQL 查询
+   针对上述3个核心方法的应用，列举参考代码如下所示：
+   var db=openDatabase('mydb','1.0','Test DB',2 * 1024 *1 024)
+        db.transction(function(tx){
+            tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique , log)');
+        });
+   说明：上述语句执行后会在 'mydb' 数据库中创建一个名为 LOGS 的表
+
+二、基本操作
+1.插入数据：  (两种方式均基于上述语句的事务函数中)
+<1>.创表后直接插入数据：
+    db.transaction(function (tx) {
+        tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")');
+        tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")');
+        });
+
+<2>.使用动态值插入数据：
+    db.transaction(function (tx) {
+        tx.executeSql('INSERT INTO LOGS (id,log) VALUES (?, ?)', [e_id, e_log]);
+    });
+说明：实例中的 e_id 和 e_log 是外部变量，executeSql 会映射数组参数中的每个条目给 "?"
+
+2.读取/查询数据：(读取数据库中已有的数据)
+     tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+          var len = results.rows.length, i;
+          msg = "<p>查询记录条数: " + len + "</p>";
+          document.querySelector('#status').innerHTML +=  msg;
+
+          for (i = 0; i < len; i++){
+             alert(results.rows.item(i).log );
+          }
+       }, null);
+
+3.删除数据：(两种方式)
+<1>.直接指定删除
+    db.transaction(function (tx) {
+        tx.executeSql('DELETE FROM LOGS  WHERE id=1');
+    });
+
+<2>.动态传值删除
+    db.transaction(function(tx) {
+        tx.executeSql('DELETE FROM LOGS WHERE id=?', [id]);
+    });
+
+4.更新数据： (同样的，存在两种不同的方式)
+<1>.直接传值更新
+    db.transaction(function (tx) {
+        tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=2');
+    });
+
+<2>.动态传值更新
+    db.transaction(function(tx) {
+        tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=?', [id]);
+    });
+
+

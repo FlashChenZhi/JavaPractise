@@ -1,0 +1,18 @@
+                                                    自动生成表结构和失效处理
+一、自动生成表结构
+1. 在配置文件applicationContext.xml中修改内容：
+   <property name="hibernateProperties">
+       <value>
+           hibernate.dialect=org.hibernate.dialect.MySQLDialect
+           hibernate.show_sql=false
+           hbm2ddl.auto=update
+       </value>
+   </property>
+ 说明：其中hbm2ddl.auto=update 表示是自动更新表结构，不需要手段创建的变更
+
+二、自动生成表结构 失效的处理
+1.需要在sessionfactory中加这么一句：
+    <property name="schemaUpdate">
+	     <value>true</value>
+	</property>
+

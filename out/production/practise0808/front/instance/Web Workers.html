@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Web Workers 实例</title>
+    <script src="../js/demo_workers.js"></script>
+</head>
+<body>
+    <p>
+        web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能；<br>
+        您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行
+    </p>
+    <p>计数器：<output id="result"></output></p>
+    <button onclick="startWorker()">开始工作</button>
+    <button onclick="stopWorker()">结束工作</button>
+    <p>获取服务器更新数据</p>
+    <div id="div1"></div>
+    <script>
+        if(typeof(EventSource)!=="undefined"){
+            var time=setInterval("document.getElementById('div1').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+            var source=new EventSource(time);
+            source.onmessage(event)
+            {
+                document.getElementById("div1").innerHTML+=event.data + "<br>";
+            };
+        }
+        else
+        {
+            document.getElementById("div1").innerHTML="抱歉，你的浏览器不支持 server-sent 事件...";
+        }
+    </script>
+    <!--    检查浏览器是否支持 Web Works     -->
+    <script type="text/javascript">
+        var w;
+        function startWorker(){
+            if(typeof (Worker)!=="undefined"){
+                if(typeof (w)=="undefined"){
+                    w=new Worker("../script/demo_workers.js");
+                }
+                w.onmessage=function (ev) {
+                   document.getElementById("result").innerHTML=ev.data;
+                };
+            }else{
+                document.getElementById("result").innerHTML="抱歉，你的浏览器不支持 Web Workers...";
+            }
+        }
+        
+        function stopWorker() {
+            w.terminate();
+            w=undefined;
+        }
+    </script>
+<script type="text/javascript">
+    if(typeof(Worker)!=="undefined") {
+    // 是的! Web worker 支持!
+    // 一些代码.....
+    } else {
+    //抱歉! Web Worker 不支持
+    }
+</script>
+</body>
+</html>

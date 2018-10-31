@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Method 方法应用</title>
+</head>
+<body>
+<h2>使用 XMLHttpRequest 来获取文件内容</h2>
+<p>文件内容是标准的 JSON 格式，可以使用 JSON.parse 方法将其转换为 JavaScript 对象</p>
+<p>eval(string):函数可计算某个字符串，并执行其中的的 JavaScript 代码</p>
+<p id="p1"></p>
+<p>查看 JSON 文件数据 <a href="/resource/a.txt" target="_blank">a.txt</a></p>
+</body>
+
+<script>
+    /*  eval()方法可根据变量自动判断，计算并赋值     */
+    eval("var a=10");     // 声明一个变量a并赋值1。
+    eval("2+3");         // 执行加运算，并返回运算值。
+    // eval("mytest()");    // 执行mytest()函数。
+    // eval("{b:2}");       // 声明一个对象。
+    document.getElementById("p1").innerHTML=eval(" 2+6 ")+eval("10 ");
+</script>
+
+<script type="text/javascript">
+    /*    var request=new XMLHttpRequest();
+        request.onreadystatechange=function () {
+            if((this.readyState==4) && (this.status==200)){
+                myObj = JSON.parse(this.responseText);
+                document.getElementById("p1").innerHTML=myObj.name;
+            }
+        };
+        request.open("GET","resource/a.txt",true);
+        request.send();
+    */
+</script>
+</html>

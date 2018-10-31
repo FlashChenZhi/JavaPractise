@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hacker</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        canvas{
+            background-color: black;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas>
+
+    </canvas>
+    <script>
+        const oC=document.querySelector("canvas");
+        const cxt=oC.getContext('2d');
+        var w=oC.width=window.innerWidth;
+        var h=oC.height=window.innerHeight;
+        window.addEventListener("resize",function () {
+            w=oC.width=window.innerWidth;
+            h=oC.height=window.innerHeight;
+        });
+        var  arr=new Array(255).join('1').split('');
+        draw();
+        function draw() {
+            cxt.fillStyle='rgba(0,0,0,0.05)';
+            cxt.fillRect(0,0,w,h);
+            cxt.fillStyle=randamColor();
+            arr.map(function (value, index) {
+                cxt.font='16px,宋体';
+                var text=String.fromCharCode(65+Math.random()*5);
+                var x=index*10;
+                cxt.fillText(text,x,value);
+                arr[index]=value>h+Math.random()*500?0:value+15;
+            });
+            cxt.font='50px,微软雅黑';
+            var str='入侵子鹏';
+            var fontW=cxt.measureText(str).width/2;
+            cxt.fillText(str,w/2-fontW,h/2);
+            requestAnimationFrame(draw)
+        }
+        function randamColor() {
+            var r=Math.floor(Math.random()*256);
+            var g=Math.floor(Math.random()*256);
+            var b=Math.floor(Math.random()*256);
+            return 'rgb(${r},${g},${b})';
+        }
+    </script>
+</body>
+</html>

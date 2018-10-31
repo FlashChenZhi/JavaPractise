@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 多媒体标签</title>
+    <script src="../js/html5shiv.js"></script>
+</head>
+<script>
+    document.createElement(myHero)
+</script>
+<style>
+    myHero{
+        display: block;
+        color: #FFA500;
+        padding: 68px;
+        font-size: 50px;
+    }
+</style>
+<body>
+<h3>动物世界</h3>
+    <video width="320" height="240" controls>
+        <source src="../../images/video/movie.mp4" type="video/mp4">
+        <source src="../../images/video/movie.ogg" type="video/ogg">
+        你的浏览器不支持 video 标签！
+    </video>
+<p> video元素支持三种视频格式： MP4, WebM, 和 Ogg</p>
+<h3>我只在乎你</h3>
+    <audio controls >
+        <source src="../../images/audio/我只在乎你.mp3" type="audio/mp3">
+        <source src="../../images/audio/我只在乎你.ogg" type="audio/mpeg">
+        您的浏览器不支持 audio 元素
+    </audio>
+<h3>视频播放的简单调整</h3>
+    <div style="text-align: left">
+        <video  id="video1" width="420">
+            您的浏览器不支持 HTML5 video 标签
+            <source src="../../images/video/mov_bbb.mp4" type="video/mp4">
+        </video><br>
+        <button onclick="playPause()">播放/暂停</button>&nbsp;&nbsp;
+        <button onclick="makeBig()">放大</button>&nbsp;&nbsp;
+        <button onclick="makeSmall()">缩小</button>&nbsp;&nbsp;
+        <button onclick="normal()">标准</button>&nbsp;&nbsp;
+    </div>
+
+<h3>使用JavaScript脚本创建段落元素(我的英雄)</h3>
+<p><myHero>我的英雄</myHero></p>
+<script>
+    var myVideo=document.getElementById("video1");
+    var value=50;
+    var min=120;
+    var max=720;
+    function playPause() {
+        if(myVideo.paused){
+            myVideo.play();
+        }else{
+            myVideo.pause();
+        }
+    }
+    function makeBig() {
+        if(myVideo.width<max) {
+            myVideo.width += value;
+        }else {
+            myVideo.width=max;
+        }
+    }
+    function makeSmall() {
+        if(myVideo.width>min){
+            myVideo.width-=value;
+        }else{
+            myVideo.width=min;
+        }
+
+    }
+    function normal(){
+        myVideo.width="420";
+    }
+</script>
+
+<!--[if lt IE 9]>
+<js src="../js/html5shiv.js"></js>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+                                                                IDEA 新建SSM项目流程
+一、SSM项目搭建步骤
+1.Create New Project新建项目
+2.左边选中Maven，右边勾选Create from archetype，并且选中org.apache.maven.archetypes:maven-archetype-webapp
+3.下一步，项目参数：GroupId: com.how2java       ArtifactId: ssm   (可自定义命名)
+4.确认Maven路径 (将看到Maven 配置中的参数，无需做改动 )
+5. 确认项目名称    (无需改动,点击Finish即可 )
+6.提示信息：点击Enable Auto-Import，自动导入，省掉麻烦
+7.新建java源代码目录：
+  右键main目录-> New->Directory->输入java->右键java->Mark Directory as-> Sources Root
+8.修改pom.xml 配置文件：(部分代码)
+  <jsqlparser.version>1.0</jsqlparser.version>
+    <jackson.version>1.2.7</jackson.version>
+    <servlet-api.version>3.1.0</servlet-api.version>
+    <druid.version>1.0.18</druid.version>
+    <log4j.version>1.2.16</log4j.version>
+9.新建页面.jsp文件，书写显示内容
+10.创建java文件和对应的配置文件
+11.配置Tomcat服务器并部署项目
+12.启动Tomcat服务器，查看显示效果

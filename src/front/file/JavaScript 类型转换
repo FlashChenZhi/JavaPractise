@@ -1,0 +1,33 @@
+                                            JavaScript 类型转换
+一、JavaScript 中有 5 种不同的数据类型
+   1. string
+   2. number
+   3. boolean
+   4. object
+   5. function
+
+二、3 种对象类型
+   1. Object
+   2. Date
+   3. Array
+
+三、2 个不包含任何值的数据类型
+  1. undefined
+  2. null
+
+四、typeof 操作符
+  1. NaN 的数据类型是 number
+  2. 数组(Array)的数据类型是 object
+  3. 日期(Date)的数据类型为 object
+  4. null 的数据类型是 object
+  5. 未定义变量的数据类型为 undefined
+
+五、JavaScript 类型转换
+JavaScript 变量可以转换为新变量或其他数据类型：
+    1. 通过使用 JavaScript 函数
+    2. 通过 JavaScript 自身自动转换
+
+六、typeOf 和 instanceOf 两者的区别
+1.typeOf：用以获取一个变量或者表达式的类型 ( 即 5 种不同的数据类型 )
+2.instanceOf：用来判断对象的具体类型  ( 即 3 种对象类型 )
+

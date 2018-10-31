@@ -1,0 +1,10 @@
+                                                JavaScript关键字的应用
+1.break 语句用于跳出循环
+  作用：可以跳出 switch() 语句
+
+2.continue 用于跳过循环中的一个迭代
+   作用：跳出循环后，会继续执行该循环之后的代码（如果有的话）
+
+3. JavaScript 标签与 break 和 continue 一起使用的情况下
+(1).当 break 和 continue 同时用于循环时，没有加标签，此时默认标签为当前"循环"的代码块
+(2).当 break 用于 switch 时，默认标签为当前的 switch 代码块

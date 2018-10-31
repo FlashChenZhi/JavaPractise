@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 新的 Input 类型</title>
+</head>
+<body>
+<div id="div1">
+    <h3>HTML5 Input标签和表单新元素</h3>
+    <form id="fm" name="fm" action="" method="post" oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+    <ol>
+        <li>拾色器：color<input type="color" name="myColor"></li>
+        <li>时间控制器：date<input type="date" name="bday"></li>
+        <li>日期和时间控制器（本地时间）：datetime<input type="datetime" name="bdaytime"></li>
+        <li>日期和时间 (无时区)：datetime-local<input type="datetime-local" name="dtl"></li>
+        <li>邮箱：email<input type="email" name="eml" autocomplete="off"></li>
+        <li>月份：month<input type="month" name="bdaymonth"></li>
+        <li>数值：number<input type="number" name="quantity" min="0" max="6"></li>
+        <li>滑动条：range<input type="range" name="points" min="1" max="10"></li>
+        <li>搜索：search<input type="search" name="find"></li>
+        <li>电话：tel<input type="tel" name="usrtel"></li>
+        <li>可输入时间控制器：time<input type="time" name="usr_time"></li>
+        <li>路径：url<input type="url" name="homepage" form="fm"></li>
+        <li>周和年：week<input type="week" name="week_year"></li>
+        <li>密码：password<input type="password" name="psw"></li>
+        <li>重置：reset<input type="reset" name="cancel"></li>
+        <li>提交：submit<input type="submit" name="sub"></li>
+    </ol>
+        <p>相关说明：<br>自动验证：邮箱/路径<br>条件约束：数值大小/滚动条长度/电话号码</p>
+        请选择你的浏览器：
+        <input list="browser" name="browser">
+        <datalist id="browser">
+            <option value="Internet Explorer"/>
+            <option value="Google"/>
+            <option value="BaiDu"/>
+            <option value="FireFox"/>
+            <option value="Opera"/>
+            <option value="Safari"/>
+        </datalist><br>
+        autofocus：自动获取焦点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;placeholder：表述输入框中所期待的值
+        用户名：<input type="text" name="usr_name" placeholder="请输入用户名" autofocus><br>
+        加密(该标签暂不可用)：<keygen name="security" /><br>
+        formmethod：定义表单提交方式，同样覆盖相关属性
+        <input type="text" name="txt1" formmethod="get"><br>
+        multiple：规定该元素中可选择多个值
+        <input type="file" name="txt2" multiple ><br>
+        formtarget：指定一个名称或关键字来指明表单提交数据接收后的展示，同样覆盖相关属性
+        <input type="text" name="txt3" formtarget="_blank" value="提交到一个新的页面上"><br>
+        pattern：描述一个正则表达式用于验证该元素的值
+        <input type="text" name="country_code" pattern="[A-Za-z]{3}" title="Three letter country code"><br>
+        <input type="submit" name="sub" formnovalidate value="不验证提交"><br>
+        step：为输入域规定合法的数字间隔
+        <input type="number"  name="points" step="2"><br>
+        <input type="number" name="points" step="3"><br>
+        0<input id="a" type="range" min="0" max="100" value="50">100+
+        <input id="b" type="number" min="1" max="100" value="50">=
+        <output id="ab" name="x" for="a b" >100</output>
+    </form>
+    <h3>表单(前2个)和Input标签中的其他属性</h3>
+    <ol type="A">
+        <li> novalidate：无需验证</li>
+        <li>autofocus：自动获取焦点</li>
+        <li> form属性</li>
+        <li>formaction： 描述表单提交的URL地址，会覆盖form元素中的action属性</li>
+        <li>formenctype：描述表单提交到服务器的数据编码，同样覆盖相关属性</li>
+        <li>formmethod：定义表单提交方式，同样覆盖相关属性</li>
+        <li>formnovalidate：作用同form元素属性相同，同样覆盖相关属性</li>
+        <li>formtarget：指定一个名称或关键字来指明表单提交数据接收后的展示，同样覆盖相关属性</li>
+        <li>multiple：规定该元素中可选择多个值</li>
+        <li>pattern：描述一个正则表达式用于验证该元素的值</li>
+        <li>placeholder：表述输入框中所期待的值</li>
+        <li>required：规定必须在提交之前填写输入域（不能为空）</li>
+        <li>step：为输入域规定合法的数字间隔</li>
+    </ol>
+</div>
+<h3>使用 web 存储前,应检查浏览器是否支持 localStorage 和sessionStorage</h3>
+<p><button type="button" id="btn" onclick="clickCounter()">点我😄</button></p>
+<div id="result">
+</div>
+<p>点击该按钮查看计数器的增加！</p>
+<p>关闭浏览器选项卡(或窗口),重新打开此页面,计数器将继续计数(不是重置)</p>
+<script>
+    function clickCounter() {
+        if(typeof(Storage)!=="undefined"){
+            // localStorage.sitename="菜鸟教程";
+            // document.getElementById("result").innerHTML="网站名："+localStorage.sitename;
+            if(localStorage.clickcount){
+                localStorage.clickcount=Number(localStorage.clickcount)+1;
+            }else{
+                localStorage.clickcount=1;
+            }
+            document.getElementById("result").innerHTML="你已经点击了  "+localStorage.clickcount+" 次";
+        }else{
+            document.getElementById("result").innerHTML="对不起，您的浏览器不支持 web 存储";
+        }
+    }
+
+</script>
+</body>
+</html>

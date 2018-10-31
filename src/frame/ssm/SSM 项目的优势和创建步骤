@@ -1,0 +1,53 @@
+                                                        SSM 项目的优势和创建步骤
+一、Mybatis 框架的优势
+1.只需要自己提供SQL语句，进行增删改查等功能的操作
+2.避免重复性工作的繁琐：例如建立连接，Statement， JDBC相关异常处理等等
+3.将技术细节进行有效的封装起来了
+
+二、项目创建基本步骤：
+1. 首先创建实体类对象，用于映射对应表
+2. 创建配置文件mybatis-config.xml：
+   作用主要是提供连接数据库用的驱动，数据库名称，编码方式，账号密码；以及别名，自动扫描指定包下的类型
+   (mybatis配置文件参考代码 如下所示)
+   <configuration>
+       <typeAliases>
+         <package name="com.how2java.pojo"/>
+       </typeAliases>
+       <environments default="development">
+           <environment id="development">
+               <transactionManager type="JDBC"/>
+               <dataSource type="POOLED">
+                   <property name="driver" value="com.mysql.jdbc.Driver"/>
+                   <property name="url" value="jdbc:mysql://localhost:3306/how2java?characterEncoding=UTF-8"/>
+                   <property name="username" value="root"/>
+                   <property name="password" value="admin"/>
+               </dataSource>
+           </environment>
+       </environments>
+       <mappers>
+           <mapper resource="com/how2java/pojo/Category.xml"/>
+       </mappers>
+   </configuration>
+
+3. 在实体类的对应包下新建该类映射文件：
+    <mapper namespace="com.how2java.pojo">
+           <select id="listCategory" resultType="Category">
+               select * from   category_
+           </select>
+    </mapper>
+   说明：resultType="Category" 表示返回的数据和Category关联起来
+         namespace="com.how2java.pojo" 表示指定的命名空间
+         id: listCategory 进行标识以供后续代码调用
+4. 创建测试类文件：
+    可在主方法里面调用映射文件中的查询语句
+    例如：List<Category> cs=session.selectList("listCategory");
+5. 运行主方法，查看控制台显示结果
+
+三、基本工作原理
+1.应用程序找Mybatis要数据
+2.mybatis从数据库中找来数据
+    2-1. 通过 mybatis-config.xml 定位哪个数据库
+    2-2. 通过 类名.xml执行对应的select语句
+    2-3. 基于 类名.xml把返回的数据库记录封装在该类对象中
+    2-4. 把多个该类对象装在一个泛型集合中
+    2-5. 返回一个该泛型集合的数据

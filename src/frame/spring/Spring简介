@@ -1,0 +1,99 @@
+                                                Spring 简介
+一、Spring框架知识
+1. Spring简介：
+   Spring是一个基于IOC和AOP的结构，开源的轻量级J2EE开发应用框架；
+   其目的是用于简化企业级应用程序开发。应用程序是由一组相互协作的对象组成.
+2. Spring两大核心特征
+   IOC：反转控制，是Spring的基础，Inversion Of Control
+   Spring的一个容器，他不是一种技术，而是一种思想，依旧是基于面向对象编程的；
+   简单说，就是创建对象由以前的程序员自己new 构造方法来调用，变成了交由Spring创建对象
+
+   AOP：面向切面编程，同样的，它也是一种思想，而不是技术
+   将一个工程中与源代码无关，但是很多地方都要用，抽出来也不影响源代码上下文的那一部分代码抽出来，
+   然后要用的时候就织入进去，进行使用，至于是在指定的代码之前使用还是之后又或者异常使用等，可以动态的进行
+
+3. IOC三种注入方式：
+   (1).接口注入（不推荐）
+   (2).构造方法注入：时效性好，但是灵活性差
+   (3).赋值方式注入（常用）：时效性差，但灵活性好，需要有set方法
+   (4).基于注解注入：注解可以简化配置，提升开发效率，但不利于后期维护
+
+二、Spring 模块构成及其作用
+spring的基本框架
+1. 说明：DAO、ORM、AOP、JEE、WEB、CORE
+2. 各模块的作用
+   (1).DAO： Spring提供了对JDBC的操作支持：JdbcTemplate模板工具类
+   (2).ORM： Spring可以与ORM框架整合，可提供HibernateDaoSupport工具类，简化Hibernate的操作
+   (3).AOP： Spring提供面向切面的编程，可以给某一层提供事务管理，如在Service层添加事物控制
+   (4).JEE： J2EE开发规范的支持，例如EJB
+   (5).WEB： Spring提供了对Struts、Springmvc的支持，支持WEB开发
+   (6).CORE：提供IOC容器对象的创建和处理依赖对象关系
+
+三、 AOP 涉及专业术语
+1. 目标对象（Target）：我们需要对他进行操作的业务类
+2. 连接点(JoinPoint)：连接点就是程序执行的某个特定的位置
+3. 切入点（Pointcut）：用于定义通知应该切入到哪些连接点上
+4. 通知（Advice）：也有叫增强的，是切面的具体实现   (通知分类如下)
+    (1).前置通知(Before)：
+    (2).后置通知(AfterReturning)：
+    (3).异常通知(AfterThrowing)：
+    (4).最终通知(After)：
+    (5).环绕通知(Around)：
+5. 切面（Aspect）：通知和切点的结合，共同定义了切面的全部，其实就是共有功能的实现
+6. 织入（Weaving）：将切面应用到目标对象从而创建一个新的代理对象的过程
+7. 代理对象（Proxy）：将通知应用到目标对象之后被动态创建的对象，其功能等于目标对象的核心业务逻辑功能加上共有功能
+
+四、 AOP 配置事务管理
+1. 3个组成部分：
+   (1). DataSource
+   (2). TransactionManager
+   (3). 代理机制
+
+2. 事务配置的五种方式
+   <1>.全注解配置，类名前面加@注解  (参考文件：Annotate)
+   <2>.使用拦截器                   (参考文件：Interceptor)
+   <3>.使用tx标签配置的拦截器       (参考文件：TransactionManager)
+   <4>.所有Bean共享一个代理基类     (参考文件：AllBean)
+   <5>.每个Bean都有一个代理         (参考文件：BeanProxy)
+
+   说明：注解配置的常用标签及其作用
+    (1).@Autowired：一般加在类中的属性名前，也可以在属性的Set()方法前
+    (2).@Resource(name="c")：同样的加在类中的属性名前,别名从配置文件的Bean标签的name属性获取
+    (3).@Component("c")：加在类中的属性名前，并修改配置文件(如下)，作用是告诉Spring，Bean都放在这个包下面
+        修改ApplicationContext.xml配置：<context:component-scan base-package="com.how2java.pojo"/>
+
+
+五、Spring应用的优势
+1. 利于解耦，简化开发(高内聚低耦合)：
+   Spring类似于工厂（容器）用于生成bean，可以将所有对象创建和依赖关系维护，交给Spring管理
+2. 支持AOP编程
+   Spring提供面向切面编程，可以方便的实现对程序进行权限拦截、运行监控等功能
+3. 声明式事务的支持
+   只需要通过配置就可以完成对事务的管理，而无需手动编程
+4. 方便程序的测试
+   Spring对Junit4支持，可以通过注解方便的测试Spring程序
+5. 方便集成各种优秀框架
+   Spring不排斥各种优秀的开源框架，其内部提供了对各种优秀框架（如：Struts、Hibernate、MyBatis、Quartz等）的直接支持
+6. 降低JavaEE API的使用难度
+   Spring 对JavaEE开发中非常难用的一些API（JDBC、JavaMail、远程调用等），都提供了封装，使这些API应用难度大大降低
+
+
+六、其他注解说明
+1. @Aspect ：注解表示这是一个切面，常加在类名上面
+2. @Component ：表示这是一个bean,由Spring进行管理
+3. @Around(value = "execution(* com.service.ProductService.*(..))")：表示对com.service.ProductService 这个类中的所有方法进行切面操作
+4. @RunWith(SpringJUnit4ClassRunner.class) ：表示这是一个Spring的测试类
+5. @ContextConfiguration("classpath:applicationContext.xml")：定位Spring的配置文件
+6. @Test：测试逻辑，可在控制台显示输出内容
+7. @Controller ：表示该类是一个控制器
+8. @RequestMapping("/index") ：表示路径/index会映射到该方法上
+9. @Scope("prototype")：表示类对象的作用域，一般加载类名的上面，也可加在xml 配置文件对应bean熟悉里面
+10.@Service ：为服务层所在类添加注解，一般加载类名的上
+11.@ParentPackage("struts-default")：表示继承自父类包，一般加载类名的上；这里是指向struts默认包
+12.@Namespace("/")：表示文件的命名空间，可以加载类名上面，也可以写在配置文件中
+13.@Column ：指明属性对应的数据库中的字段名
+14.@Table ：指定对应表名
+15.@Entity ：表示该类为实体对象
+16.@GeneratedValue(strategy = GenerationType.IDENTITY)： 使用自增长策略
+
+

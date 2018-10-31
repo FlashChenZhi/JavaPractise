@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML DOM 事件属性</title>
+    <script type="text/javascript">
+        function changeText(id) {
+            id.innerHTML="<font color='red' size='6'><b><i>"+"点击事件"+"</i></b></font>";
+        }
+        function displayDate(){
+            document.getElementById("p1").innerHTML=Date();
+        }
+        function checkCookies() {
+            if(navigator.cookieEnabled==true){
+                alert("Cookies 可以使用");
+            }else{
+                alert("Cookies 不可用！😭")
+            }
+        }
+        function onUnload() {
+            alert("欢迎再次访问本页面！")
+        }
+        function onChange() {
+            var x=document.getElementById("txt");
+            x.value=x.value.toUpperCase();
+        }
+        function onMouseOver(div) {
+            div.style="background-color:#FFA500";
+            div.width=100;
+            div.height=20;
+            div.padding=10;
+            div.innerHTML="Welcome To Here ！🙂";
+        }
+        function onMouseOut(div){
+            div.style="background-color:#2f889a";
+            div.width=160;
+            div.height=20;
+            div.padding=10;
+            div.innerHTML="Goodbye👋";
+        }
+        function MouseDown(){
+            document.getElementById("light").src="../../images/picture/pic_bulbon.gif";
+        }
+        function MouseUp() {
+            document.getElementById("light").src="../../images/picture/pic_bulboff.gif";
+        }
+        function get(span) {
+            span.style.background="#FFA500";
+        }
+        function lose(span){
+            span.style.background="#99ff99";
+        }
+    </script>
+</head>
+<body onload="">
+<h3 onclick="changeText(this)">1.点击文本</h3>
+<p>按钮触发点击事件</p>
+<p id="p1"></p>
+<button onclick="displayDate()">显示时间</button><br/>
+<h3>2.onLoad 和 onUnload 事件 (弹窗-提示浏览器：Cookies是否可用)——这组事件会在进入或离开页面触发显示!</h3>
+<h3>3.在下面文本框输入内容，离开后会发生改变事件(所有小写转大写)</h3>
+请输入用户名：<input type="text" id="txt" onchange="onChange()"/>
+<h3>4.onMouseOver 和 onMouseOut 事件 (鼠标划入和鼠标移出事件)</h3>
+<div onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)"  style="background-color:#D94A38;width:120px;height:20px;padding:40px;"></div>
+<h3>5.onMouseDown、onMouseUp 事件 (鼠标按下和鼠标弹起事件)</h3>
+<p>点击不释放鼠标灯将一直亮着!</p>
+<img src="../../images/picture/pic_bulboff.gif" id="light" width="100" height="180" onmousedown="MouseDown()" onmouseup="MouseUp()">
+<h3>onfocus 和 onblur 事件 (通过鼠标移动：获取焦点 和 失去焦点 事件)</h3>
+焦点事件：<input type="text" id="sp" onfocus="get(this)" onblur="lose(this)" />
+<p>实例使用 addEventListener() 方法在同一个按钮中添加多个事件</p>
+<button id="myBtn">点我</button>
+<p id="p2"></p>
+<p>实例演示了在使用 addEventListener() 方法时如何传递参数</p>
+<button id="btn">计算结果</button>
+<p id="p3"></p>
+<div id="div1">
+<p>创建新的 HTML 元素(节点)</p>
+    <p id="node1">这是一个段落</p>
+    <p id="node2">这是另一个段落(执行移除方法)</p>
+    <p id="node3">第三个段落部分（执行替换方法)</p>
+</div>
+    <p id="count"></p>
+    <button id="butt" onclick="editColour()">更新段落背景</button>
+</body>
+<script>
+    var x = document.getElementById("myBtn");
+    x.addEventListener("mouseover", myFunction);
+    x.addEventListener("click", mySecondFunction);
+    x.addEventListener("mouseout", myThirdFunction);
+    function myFunction() {
+        document.getElementById("p2").innerHTML += "事件监听者1：鼠标滑入<br>";
+    }
+    function mySecondFunction() {
+        document.getElementById("p2").innerHTML += "事件监听者2：按钮点击<br>";
+    }
+    function myThirdFunction() {
+        document.getElementById("p2").innerHTML += "事件监听者3：鼠标移出<br>";
+    }
+</script>
+<script>
+   var p1=5,p2=7;
+   document.getElementById("btn").addEventListener("click",function () {
+       myFunction(p1,p2);
+   });
+   function myFunction(a,b) {
+       var result=a*b;
+       document.getElementById("p3").innerHTML=result;
+   }
+</script>
+<script>
+    /*  添加一个新段落 和  在开始位置添加段落  */
+    var para1=document.createElement("p");
+    var para2=document.createElement("p");
+    var node1=document.createTextNode("通过节点创建新的段落");
+    var node2=document.createTextNode("将元素添加到开始位置的段落");
+    para1.appendChild(node1);
+    para2.appendChild(node2);
+    var element=document.getElementById("div1");
+    element.appendChild(para1);
+    var child=document.getElementById("node1");
+    element.insertBefore(para2,child);
+    /*  移除指定元素 和 替换指定元素     */
+    var remove=document.getElementById("node2");
+    element.removeChild(remove);
+    var old=document.createElement("rep");
+    var content=document.createTextNode("替换后的段落内容");
+    old.appendChild(content);
+    var replace=document.getElementById("node3");
+    element.replaceChild(old,replace);
+    /*      统计页面段落数量    */
+    var count=document.getElementsByTagName("p");
+    document.getElementById("count").innerHTML= "页面包含" + count.length + " 个段落";
+    /*      统一更新段落背景颜色      */
+    function editColour() {
+        for(var i=0;i<count.length;i++){
+            count[i].style.color="blue";
+        }
+    }
+</script>
+</html>

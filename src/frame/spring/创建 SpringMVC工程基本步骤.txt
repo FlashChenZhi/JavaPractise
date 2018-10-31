@@ -1,0 +1,37 @@
+					                        创建 Spring MVC 工程基本步骤
+一、方法一(视图定位)：
+1.创建工程，选择Spring右侧的Spring MVC和Web Application(若有Download选项要默认勾选)；
+
+2.修改基本的配置文件web.xml ：该文件是用来启动DispatcherServlet的，需要修改初始设置
+  将下列标签元素中的url-pattern路径修改成“/” 即可，表示可以捕获所有的url请求
+   <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+3.修改dispatcher-servlet.xml文件：这个文件主要用来配置HandlerMapping
+   <bean name="/welcome.html" class="com.controller.WelcomeController"></bean>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+  说明：class="com.controller.WelcomeController"表示的是src下的路径
+	<property name="prefix" value="/WEB-INF/jsp/"/>，其中value=""表示路径，prefix 表示前缀
+
+4.通过上述提供的文件路径，创建对应的包名com.controller和控制层文件WelcomeController
+  注意：方法返回值 return new ModelAndView（返回值）应与jsp文件名和html文件名一致 (例如：welcome)
+
+5.在指定目录WEB-INF目录下新建jsp文件夹，然后创建welcome.jsp文件，并写入页面显示内容
+
+6.添加Tomcat服务器和部署项目，启动服务器查看显示效果
+
+
+二、方法二(Maven管理)
+1.创建新工程 Creat New Project，选中Web Application (若有Creat web.xml选项要默认勾选)
+2.然后右键项目，选择add Framework Support，在选项卡中选择maven (工程中的jar包可通过maven统一管理)
+3.检查是否生成Pom.xml，是否出现错误显示；
+4.在项目目录下创建目录，并且新建controller文件 (继承HttpServlet和重写方法 )
+5.在Web.xml文件中，会指向生成的index.jsp文件，可以默认使用，也可以修改成新建的jsp文件
+6.在jsp文件中写入显示内容即可
+7.添加Tomcat服务器，并部署项目，启动服务器查看显示效果
+

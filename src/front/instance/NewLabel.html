@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 新元素的应用</title>
+</head>
+<script type="text/javascript">
+    document.createElement(myHero);
+</script>
+    <style>
+        myHero{
+            display: block;
+            color: #FFA500;
+            padding: 36px;
+            font-size: 28px;
+        }
+    </style>
+<body>
+<h3>使用JavaScript脚本创建段落元素(我的英雄)</h3>
+<p><myHero>我的英雄</myHero></p>
+
+<h3>红色矩形(自定义颜色渐变)</h3>
+<canvas id="myCanvas" >
+    你的浏览器不支持 HTML5 canvas 标签
+</canvas>
+
+<h3>正方形(绘制线条+圆形渐变)</h3>
+<canvas id="square" ></canvas>
+<h3>圆形(显示画布)</h3>
+<canvas id="circular" width="200" height="100" style="background-color: #99ff99 ;border: 1px solid">
+</canvas>
+<h3>绘制文字信息</h3>
+<canvas id="content" width="200" height="100" style="background-color: darkgrey ;border: 1px solid">
+</canvas>
+<h3>Canvas - 图像</h3>
+<img id="scream" src="../../images/joke/程序员蛋糕.jpg" alt="The_sream" width="640" height="640" />
+<canvas id="draw" width="700" height="700"  style="border:1px solid #d3d3d3;">
+    您的浏览器目前不支持 HTML5 canvas 标签的使用！
+</canvas>
+<script type="text/javascript">
+    var canvas=document.getElementById("myCanvas");
+    var ctx=canvas.getContext("2d");
+    //创建渐变
+    var grd=ctx.createLinearGradient(0,0,200,0);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(1,"blue");
+    //填充渐变
+    ctx.fillStyle=grd;
+    ctx.fillRect(0,0,200,120);
+
+    var square=document.getElementById("square");
+    var adorn=square.getContext("2d");
+    //创建渐变
+    var grd=adorn.createLinearGradient(10,30,5,10,30,10);
+    grd.addColorStop(0,"green");
+    grd.addColorStop(1,"white");
+    //填充渐变
+    adorn.fillStyle=grd;
+    adorn.fillRect(0,0,200,200);
+    adorn.moveTo(0,0);
+    adorn.lineTo(150,150);
+    adorn.stroke();
+
+    var circular=document.getElementById("circular");
+    var cycle=circular.getContext("2d");
+    cycle.beginPath();
+    cycle.fillStyle="#0000FF";
+    cycle.arc(100,50,40,0,Math.PI*2);
+    cycle.stroke();
+
+    var content=document.getElementById("content");
+    var ctt=content.getContext("2d");
+    ctt.font="30px 华文行楷";
+    // ctt.fillText("实心汉字",10,50);
+    ctt.strokeText("空心文字",10,50);
+
+    var draw=document.getElementById("draw");
+    var dw=draw.getContext("2d");
+    var scream=document.getElementById("scream");
+    scream.onload=function () {
+        dw.drawImage(scream,10,10);
+    }
+</script>
+</body>
+</html>

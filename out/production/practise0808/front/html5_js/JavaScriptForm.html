@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript表单验证</title>
+    <script type="text/javascript">
+        function validateForm(){
+            var val=document.forms["fm"]["username"].value;
+            var psw=document.forms["fm"]["psw"].value;
+            var email=document.forms["fm"]["email"].value;
+            if(val=="" || val==null){
+                alert("请输入用户名");
+                return false;
+            }
+            if(psw=="" || psw==null){
+                alert("请输入密码");
+                return false;
+            }
+                var atpos=email.indexOf("@");
+                var dotpos=email.lastIndexOf(".");
+                if(email=="" || email==null){
+                    alert("请输入邮箱号");
+                    return false;
+                }
+                if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length){
+                    alert("不是一个有效的 e-mail 地址");
+                    return false;
+                }
+        }
+    </script>
+    <script type="text/javascript">
+        function checkNumber(){
+            var num=document.getElementById("num");
+            if(num.checkValidity()==false){
+                document.getElementById("p1").innerHTML=num.validationMessage;
+            }else{
+                document.getElementById("p1").innerHTML="输入正确！";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="fm" name="fm" action="" method="post" onsubmit="return validateForm()">
+        用户名：<input type="text" id="txt" name="username"><br/>
+        密码：<input type="password" id="psw" name="psw"><br/>
+        Email: <input type="text" id="email" name="email"><br/>
+        <input type="reset" name="rt" id="rt" value="重置">&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" id="btn" name="btn" value="提交" >
+
+    <p>输入数字并点击验证按钮:</p>
+    <input id="num" type="number" min="100" max="300" required><button onclick="checkNumber()">点击验证</button><br/>
+    <p>如果输入的数字小于100 或大于300，会提示错误信息!</p>
+    <p id="p1"></p>
+</form>
+</body>
+</html>

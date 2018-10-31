@@ -1,0 +1,12 @@
+                                                Session 对象
+一、Struts2 中的两个Session对象
+1. 传统的Servlet包下的HttpSession
+   (1).获取方法：
+   先导入servlet-api.jar 文件 (参考文件路径：/resource/jar)
+   ServletActionContext.getRequest().getSession();
+
+2. Struts中自己定义的Session
+   获取方法：
+   Map m = ActionContext.getContext().getSession();
+   这个Session以Map类的形式出现，其中的值和HttpSession中的值是同步的
+

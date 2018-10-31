@@ -1,0 +1,17 @@
+                                                            JavaScript 显示数据
+一、JavaScript 可以通过不同的方式来输出数据
+1.使用 window.alert() 弹出警告框
+
+2.使用 document.write() 方法将内容写到 HTML 文档中
+    直接写入到页面的内容流，如果在写之前没有调用document.open, 浏览器会自动调用open；
+    每次写完关闭之后重新调用该函数，会导致页面被重写
+
+3.使用 innerHTML 写入到 HTML 元素
+    是DOM页面元素的一个属性，代表该元素的html内容。你可以精确到某一个具体的元素来进行更改
+    优于document.write，其原因在于其允许更精确的控制要刷新页面的那一个部分
+
+4.使用 console.log() 写入到浏览器的控制台
+    方便调式javascript脚本, 可以看到你在页面中输出的内容
+    与alert优势比较：
+    <1>.console不会打断你页面的操作，若用alert就会使页面弹框频繁，但console输出内容后页面还可正常操作
+    <2>.alert会弹出一个对象就是[object object]，但是console能看到对象的内容，并且console里面的内容非常丰富

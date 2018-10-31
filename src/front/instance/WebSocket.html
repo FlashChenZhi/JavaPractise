@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket </title>
+    <script type="text/javascript">
+        function WebSocketTest(){
+            if("WebSocket" in window){
+                alert("你的浏览器目前支持WebSocket服务😄");
+                var ws=new WebSocket("ws://localhost:19090/www/index.html");
+                ws.onopen=function () {
+                    // Web Socket 已连接上，使用 send() 方法发送数据
+                    ws.send("发送数据");
+                    alert("数据发送中...");
+                };
+                ws.onmessage=function(event){
+                    var received_msg=event.data;
+                    alert("数据已接收！")
+                };
+                ws.onclose=function(){
+                    // 关闭 websocket
+                    alert("连接已关闭>>>")
+                };
+            }else{
+                // 浏览器不支持 WebSocket
+                alert("你的浏览器不支持WebSocket服务😭")
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div id="sse">
+    <a href="javascript:WebSocketTest()">运行WebSocket</a>
+</div>
+</body>
+</html>

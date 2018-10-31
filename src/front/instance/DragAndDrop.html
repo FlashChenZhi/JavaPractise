@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 拖放( Drag 和 Drop )</title>
+    <style type="text/css">
+        #div1,#div2{
+            width: 310px;
+            height: 340px;
+            padding: 10px;
+            border: 1px mediumslateblue solid;
+            float: left;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+        function drag(ev) {
+            ev.DataTransfer.setData("Text",ev.target.id);
+        }
+        function drop(ev) {
+            ev.preventDefault();
+            var data=ev.DataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+    <h3>暂未达到预期显示效果，敬请谅解！</h3>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img id="drag1" src="../../images/joke/单纯如我.jpg" width="306" height="339" draggable="true" ondragstart="drag(event)"></div>
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</body>
+
+</html>

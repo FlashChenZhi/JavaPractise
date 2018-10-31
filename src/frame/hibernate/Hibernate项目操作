@@ -1,0 +1,36 @@
+                                            Hibernate 项目操作
+一、基本步骤：
+1.前提：在创建数据库后，新建所需的实体表
+2.准备：搭建Java项目后，导入hibernate所依赖的jar包
+3.开始：创建实体类和对应映射 xml文件
+4.配置：配置 hibernate.cfg.xml
+        配置访问数据库要用到的驱动，url，账号密码等等
+5.测试：创建测试类 TestHibernate
+(1).获取SessionFactory
+(2).通过SessionFactory 获取一个Session
+(3).在Session基础上开启一个事务
+(4).通过调用Session的save方法把对象保存到数据库
+(5).提交事务
+(6).先关闭Session，然后关闭SessionFactory
+
+
+3.1 实体类映射 xml文件：提供链接数据库的基本信息
+<hibernate-mapping package="com.how2java.pojo">
+    <class name="Product" table="product_">
+        <id name="id" column="id">
+            <generator class="native">
+            </generator>
+        </id>
+        <property name="name" />
+        <property name="price" />
+    </class>
+
+</hibernate-mapping>
+
+4.1 hibernate.cfg.xml 配置文件：提供对象与表的映射关系
+(1).其他配置及含义
+    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+(2).Hibernate事务管理方式，即每个线程一个事务
+    <property name="current_session_context_class">thread</property>
+(3).是否在控制台显示执行的sql语句
+    <property name="show_sql">true</property>

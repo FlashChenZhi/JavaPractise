@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript JSON 对象</title>
+</head>
+<body>
+<h2>使用不同的方法 为 JSON字符串创建对象</h2>
+<p id="p1"></p>
+<p id="p2"></p>
+<p id="p3"></p>
+<p id="p4"></p>
+<p id="p5"></p>
+<p id="p6"></p>
+<div id="div1"></div>
+</body>
+<script  type="text/javascript">
+   /*   第一种：JS传统方法定义    */
+   function person1(id,name,age) {
+       this.id=id;
+       this.name=name;
+       this.age=age;
+   }
+   var p1=new person1("20180820","星期一",1);
+   document.getElementById("p1").innerHTML="编号："+p1.id+"姓名："+p1.name+"年龄："+p1.age;
+</script>
+<script  type="text/javascript">
+    /*   第二种：创建时赋值    */
+    var person2={
+      id:"20180821",
+      name:"星期二",
+        age:2
+    };
+    document.getElementById("p2").innerHTML="编号："+person2.id+"姓名："+person2.name+"年龄："+person2.age;
+</script>
+<script type="text/javascript">
+    /*    第三种：定义数组保存对象    */
+    var p3=[
+        {   id:3 ,name:"星期三",age:3  },
+        {   id:4 ,name:"星期四",age:4  },
+        {   id:5 ,name:"星期五",age:5  }
+    ];
+    for(var i=0;i<p3.length;i++){
+        document.getElementById("p3").innerHTML+="编号："+p3[i].id+"姓名："+p3[i].name+"年龄："+p3[i].age+"<br/>";
+    }
+</script>
+<script type="text/javascript">
+    /*    第四种：数组保存多个对象，循环取值(类似第三种)  */
+    var p4={
+        "Chinese":[
+            {province:"湖南",city:"长沙",address:"天心区"},
+            {province:"江苏",city:"南京",address:"秦淮区"},
+            {province:"湖南",city:"株洲",address:"天元区"},
+            {province:"浙江",city:"杭州",address:"上城区"},
+            {province:"上海",city:"静安区",address:"沪太路"}
+        ]
+    };
+    /*  修改对象属性值  */
+    p4.Chinese[1].city="苏州";
+    for(var i=0;i<p4.Chinese.length;i++){
+        document.getElementById("p4").innerHTML+="省份/直辖市："+p4.Chinese[i].province+"城市："+p4.Chinese[i].city+"地址："+p4.Chinese[i].address+"<br/>";
+    }
+</script>
+<script type="text/javascript">
+    /*    第五种：数组中对象属性归类赋值   */
+    var p5={
+        ids:[
+            { id:20180822},
+            { id:20180823},
+            { id:20180824}
+        ],
+        names:[
+            { name:"礼拜三"},
+            { name:"礼拜四"},
+            { name:"礼拜五"}
+        ],
+        ages:[
+            { age:3},
+            { age:4},
+            { age:5}
+        ]
+    };
+    for(var i=0;i<p5.ids.length;i++){
+        document.getElementById("p5").innerHTML+="编号："+p5.ids[i].id;
+        var j=i;
+        if(j==i){
+            document.getElementById("p5").innerHTML+="星期："+p5.names[i].name;
+            var k=j;
+            if(k==j){
+                document.getElementById("p5").innerHTML+="年龄："+p5.ages[i].age+"<br/>";
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    /*    第六种：通过数组定义对象      */
+    var p6 = {
+        "country":["中国","南方","华中"],
+        "province":["湖南","长沙","天心"],
+        "address":["书院路","碧湘街","富绿山庄"]
+    };
+    for(var i=0;i<p6.country.length;i++){
+        document.getElementById("p6").innerHTML+=p6.country[i]+"  ";
+    }
+    document.getElementById("p6").innerHTML+="<br/>";
+    for(var i=0;i<p6.province.length;i++){
+        document.getElementById("p6").innerHTML+=p6.province[i]+"  ";
+    }
+    document.getElementById("p6").innerHTML+="<br/>";
+    for(var i=0;i<p6.address.length;i++){
+        document.getElementById("p6").innerHTML+=p6.address[i]+"  ";
+    }
+</script>
+<script type="text/javascript">
+    /*    通过比较对象，循环取值   */
+    var myObj = { "name":"菜鸟", "alex":10000, "site":"www.runoob.com" };
+    for (x in myObj) {
+        document.getElementById("div1").innerHTML += myObj[x] + "<br>";
+    }
+</script>
+</html>

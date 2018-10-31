@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WEB SQL数据库</title>
+</head>
+<script type="text/javascript">
+    var db=openDatabase("WebTest","2012","SQLTest",2 * 1024 * 1024);
+    var msg;
+    //创表+插入数据
+    db.transaction(function (transaction) {
+            transaction.executeSql("CREATE TABLE IF NOT EXISTS html5Test (id UNIQUE ,currentdatetime,log)");
+            transaction.executeSql("INSERT INTO html5Test (id ,currentdatetime,log) VALUES (1,2018-08-20,'first')");
+            transaction.executeSql("INSERT INTO html5Test (id ,currentdatetime,log) VALUES (2,2018-08-21,'second')");
+            transaction.executeSql("INSERT INTO html5Test (id ,currentdatetime,log) VALUES (3,2018-08-22,'third')");
+            transaction.executeSql("INSERT INTO html5Test (id ,currentdatetime,log) VALUES (4,2018-08-23,'next')");
+            msg = '<p>数据表已创建，且插入了4条数据!</p>';
+            document.querySelector("#div1").innerHTML=msg;
+        }
+    );
+
+    // //删除数据
+    // db.transaction(function (transaction) {
+    //     transaction.executeSql("DELETE FROM html5Test WHERE id=4");
+    // });
+
+    //更新数据
+    db.transaction(function (tx) {
+        tx.executeSql("UPDATE HTML5Test SET log=\'www.w3cschool.cc\' WHERE id=3");
+        msg="<p>更新id=1的数据记录</p>";
+        document.querySelector("#div1").innerHTML=msg;
+    });
+
+    //读取数据
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT * FROM  html5Test",[],function (tx,result) {
+            var len=result.rows.length,i;
+            msg="<p>查询记录条数："+len+"</p>";
+            document.querySelector("#div1").innerHTML+=msg;
+
+            for(i=0;i<len;i++){
+                msg="<p><b>"+result.rows.item(i).log+"</b></p>";
+                document.querySelector("#div1").innerHTML+=msg;
+            }
+        },null);
+    });
+</script>
+<body>
+    <div id="div1" name="div1">
+        状态信息
+    </div>
+</body>
+</html>

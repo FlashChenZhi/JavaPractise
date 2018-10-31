@@ -1,0 +1,31 @@
+                                                    基础Constants
+1.struts.devMode  可选值true,false （默认false），在开发模式下，struts2的动态重新加载配置和资源文件的功能会默认生效。同时开发模式下也会提供更完善的日志支持。
+2.struts.i18n.reload 可选值true,false（默认值依赖于struts.devMode），是否自动重新加载本地的资源文件。
+3.struts.i18n.encoding  主要用于设置请求编码（默认值（UTF-8）） ，Head和Include标签的解析编码。  资源和配置文件的解析编码。
+4.struts.configuration.xml.reload 可选值true,false（默认值依赖于struts.devMode）是否自动重新加载XML配置文件
+5.struts.action.extension  设置struts的Action请求的后缀，支持多个时以逗号隔开。
+6.struts.action.excludePattern 设置struts所排除的url（通过正则表达式匹配）（支持多个，以逗号隔开）
+7.struts.tag.altSyntax 可选值true，false（默认true） 是否支持ognl表达式
+8.struts.url.http.port 设置生成URL所对应的http端口
+9.struts.url.https.port 设置生成URL所对应的https端口
+10.struts.url.includeParams 可选值 none, get, all (默认get)，设置URL是否包含参数，以及是否只包含GET方式的参数。
+11.struts.locale 设置struts2默认的locale，决定使用哪个资源文件。
+12.struts.ui.templateDir 该属性指定视图主题所需要模板文件的位置，该属性的默认值是template，即默认加载template路径下的模板文件
+13.struts.ui.theme 该属性指定视图标签默认的视图主题，该属性的默认值是xhtml。
+14.struts.ui.templateSuffix 该属性指定模板文件的后缀，该属性的默认属性值是ftl。该属性还允许使用ftl、vm或jsp，分别对应FreeMarker、Velocity和JSP模板
+15.struts.multipart.saveDir 设置上传临时文件的默认目录
+16.struts.multipart.maxSize 设置上传的临时文件的最大限制
+17.struts.objectFactory.spring.autoWire 可选值（name, type, auto, constructor,name）（默认name），设置spring的自动装配方式，只有引入spring插件后才有效。
+18.struts.objectFactory.spring.autoWire.alwaysRespect （默认false）设置是否总是以自动装配策略创建对象。
+19.struts.objectFactory.spring.useClassCache （默认false）对象工厂是否使用类缓存，开发模式无效。
+20.struts.xslt.nocache （默认为false）设置XsltResult是否不是用缓存。
+21.struts.custom.properties 设置用户的自定义属性文件名列表（用，隔开）
+22.struts.custom.i18n.resources 设置用户自定义的资源文件路径列表（用，隔开）
+23.struts.serve.static （默认false） 设置是否支持静态资源请求（要求url在struts或static下）
+24.struts.serve.static.browserCache （默认false） 是否在静态资源响应中设置缓存。只有在支持静态资源时有效。
+25.struts.el.throwExceptionOnFailure （默认false）是否在解析el表达式或无法找到属性时抛出RuntimeException
+26.struts.ognl.logMissingProperties （默认false）是否日志无发找到的属性
+27.struts.ognl.enableExpressionCache 是否缓存ognl解析的表达式。
+28.struts.enable.DynamicMethodInvocation （默认false）是否支持动态的方法调用,在URL上通过!method指定方法。
+29.struts.enable.SlashesInActionNames 在URL中的Action段中是否支持斜线
+30.struts.mapper.alwaysSelectFullNamespace （默认false） 是否总是用最后一个斜线前的URL段作为namespace

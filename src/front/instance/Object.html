@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object元素</title>
+    <style type="text/css">
+        #div1{
+            width: 400px;
+            height: 50px;
+            padding: 10px;
+            border: 1px slategray solid;
+        }
+    </style>
+    <script type="text/javascript">
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+        function drag(event) {
+            event.dataTransfer.setData("Text",event.target.id);
+        }
+        function drop(event) {
+            var data=event.dataTransfer.getData("Text");
+            event.target.appendChild(document.getElementById(data));
+            event.preventDefault();
+        }
+    </script>
+</head>
+<body>
+<object width="800" height="500" data="../../images/joke/Bootstrap.jpg"></object>
+<embed src="../../images/joke/单纯如我.jpg"><br/>
+<p>使用超链接播放音频文件</p><br/>
+<a href="../../images/audio/我只在乎你.mp3">我只在乎你</a><br/>
+<p contenteditable="true">这是一个可编辑的段落</p>
+<p> accesskey 属性规定了激活元素的快捷键</p>
+<p hidden="hidden" contenteditable="true">这是一个隐藏的段落</p>
+<p>这是一个可见的段落(上方有一个隐藏的段落)</p>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+</div>
+<p id="drag1" draggable="true" ondragstart="drag(event)">这是一段可拖动的文字信息，请把该段落拖入上面的矩形</p>
+<a href="http://www.runoob.com/html/html-tutorial.html" accesskey="r" target="_blank">HTML 教程</a><br/>
+<a href="http://www.runoob.com/css/css-tutorial.html" accesskey="c" target="_blank">CSS 教程</a><br/>
+<p><strong>注意：</strong> 不同浏览器使用的快捷键方法不同：</p>
+<ul>
+    <li>IE, Chrome, Safari, Opera 15+: [ALT] + <em>accesskey</em></li>
+    <li>Opera prior version 15: [SHIFT] [ESC] + <em>accesskey</em></li>
+    <li>Firefox: [ALT] [SHIFT] + <em>accesskey</em></li>
+</ul>
+<p>观看优酷解决方案</p><br/>
+<embed src='https://player.youku.com/player.php/sid/XMTQ3MjM5Mjc0MA==/v.swf' allowFullScreen='true' quality='high'
+       width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'><embed/>
+<!--
+<embed width="400" height="50" src="bookmark.swf">
+-->
+</body>
+</html>

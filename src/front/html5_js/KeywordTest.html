@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关键词测试</title>
+    <script>
+        function breakTest(){
+            var v="";
+            for(var i=0;i<10;i++){
+                if(i==9){
+                    break;
+                }
+                if(i==4){
+                    continue;
+                }
+               v=v+"循环显示值："+i+"<br/>";
+            }
+            document.getElementById("p1").innerHTML=v;
+        }
+    </script>
+
+</head>
+<body>
+<p>点击按钮，测试带有 break 语句的循环。</p>
+<button onclick="breakTest()">点击这里</button>
+<p id="p1"></p>
+<p>显示对象person类型</p>
+<p id="p2"></p>
+<p>对比undefined和null两个对象</p>
+<p id="p3"></p>
+<p>fasle 转换为其他类型:</p>
+<p id="p4" style="font-family:courier"></p>
+<script>
+    var x = false;
+    document.getElementById("p4").innerHTML =
+        "数值型 : " + Number(x) + "<br>" +
+        "字符串型 : " + String(x) + "<br>" +
+        "布尔值型: " + Boolean(x);
+</script>
+</body>
+<script>
+    var person = null;
+    document.getElementById("p2").innerHTML = typeof person;
+    document.getElementById("p3").innerHTML ="undefined 类型："+
+        typeof undefined + "<br>" +"null 类型："+
+        typeof null + "<br>" +"两个进行绝对相等比较(值和类型)："+
+        (null === undefined) + "<br>" +"两个进行相等比较(仅对比值)："+
+        (null == undefined);
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Storage开发简单的网站列表程序</title>
+</head>
+<body>
+    <div style="border: 2px  #ccc dashed;width: 320px;text-align: center">
+        <label for="sitename">网站名(key)：</label>
+        <input type="text" id="sitename" name="sitename" class="text"/><br>
+        <label for="siteurl">网址(value)：</label>
+        <input type="text" id="siteurl" name="siteurl"/><br/>
+        <input type="button" onclick="save()" value="新增记录"/>
+        <hr/>
+        <label id="address">输入网站名：</label>
+        <input type="text" id="search_site" name="search_site"/>
+        <input type="button" onclick="find()" value="查找网站"/>
+        <p id="find_result"><br/></p>
+    </div><br/>
+    <div id="list">
+</div>
+    <script>
+        // 载入所有存储在localStorage的数据
+        loadAll();
+        //保存数据
+        function save(){
+            var sitename=document.getElementById("sitename").value;
+            var siteurl=document.getElementById("siteurl").value;
+            localStorage.setItem(sitename,siteurl);
+            alert("添加数据成功！");
+        }
+        //查找数据
+        function find() {
+            var search_site=document.getElementById("search_site").value;
+            var siteur=localStorage.getItem(search_site);
+            var find_result=document.getElementById("find_result");
+            if(siteur==null){
+                siteur="在网站列表中未找到该网站名对应网址！";
+            }
+            find_result.innerHTML="您要查找："+"<font color='red' size='3'>"+search_site+"</font>"+
+                "\t\t检测到网址名为："+"<br><font color='blue' size='3'><u>"+siteur+"</u></font>";
+        }
+        //删除数据
+        function del(name) {
+            localStorage.removeItem(name);
+            loadAll();
+        }
+        //将所有存储在localStorage中的对象提取出来，并展现到界面上
+        function loadAll() {
+            var list=document.getElementById("list");
+            if(localStorage.length>0){
+                var result="<table border='1' width='500px'>";
+                result+="<tr align='center'><td>网站名</td><td>网址</td><td>操作</td></tr>";
+                for(var i=0;i<localStorage.length;i++){
+                    var sitename=localStorage.key(i);
+                    var siteur=localStorage.getItem(sitename);
+                    result+="<tr align='center'><td>"+sitename+"</td><td>"+siteur+"</td>" +
+                        "<td><input type='button' value='删除' onclick=del("+"'"+sitename+"'"+")></td></tr>";
+                }
+                result+="</table>";
+                list.innerHTML=result;
+            }else{
+                list.innerHTML = "数据为空……";
+            }
+        }
+    </script>
+</body>
+</html>

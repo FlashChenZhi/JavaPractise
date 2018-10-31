@@ -1,0 +1,8 @@
+                                            迭代器 iterator 用法
+说明：Java 中的 Iterator 功能比较简单，并且只能单向移动：
+
+(1) 使用方法 iterator() 要求容器返回一个 Iterator，第一次调用 Iterator 的 next() 方法时，它返回序列的第一个元素；
+    注意：iterator() 方法是 java.lang.Iterable 接口,被 Collection 继承
+(2) 使用 next() 获得序列中的下一个元素；
+(3) 使用 hasNext() 检查序列中是否还有元素；
+(4) 使用 remove() 将迭代器新返回的元素删除

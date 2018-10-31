@@ -1,0 +1,31 @@
+                                            对象状态和获取方法
+一、实体类对象在Hibernate中有3种状态
+1.瞬时：没有和hibernate发生任何关系，在数据库中也没有对应的记录，一旦JVM结束，这个对象也就消失了
+        瞬时状态的对象在内存中是孤立的，它与数据库无任何关联，仅仅是一个信息携带的载体
+
+2.持久：一个对象和hibernate发生联系，有对应的session,并且在数据库中有对应的一条记录
+        只有当事务结束时，才会更新数据库，以便保证Hibernate的持久化对象和数据库操作的同步性
+
+3.托管：一个对象虽然在数据库中有对应的一条记录，但是它所对应的session已经关闭了
+
+二、实体类对象3种不同状态的具体体现  (参考代码如下)
+    public static void main(String[] args) {
+            SessionFactory sf = new Configuration().configure().buildSessionFactory();
+            Session s = sf.openSession();
+            s.beginTransaction();
+            Product p = new Product();
+            p.setName("p1");
+            System.out.println("此时p是瞬时状态");
+            s.save(p);
+            System.out.println("此时p是持久状态");
+            s.getTransaction().commit();
+            s.close();
+            System.out.println("此时p是脱管状态");
+            sf.close();
+        }
+
+三、对象获取方法
+1. load()方式：是延迟加载，只有属性被访问的时候才会调用sql语句
+               对于不存在的对象会抛出异常
+2. get()方式： 是非延迟加载，无论后面的代码是否会访问到属性，马上执行sql语句
+               对于不存在的对象会返回null

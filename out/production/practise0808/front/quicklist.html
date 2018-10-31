@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML 速查列表</title>
+</head>
+<body>
+<div>
+    <h1>HTML 各类标签速查列表</h1>
+<div id="d1">
+    <h1>一：基本标签（Basic Tags）</h1>
+    <h1>最大的标题</h1>
+    <h2>较大的标题</h2>
+    <h3>一般大标题</h3>
+    <h4>一般小标题</h4>
+    <h5>较大的标题</h5>
+    <h6>最小的标题</h6>
+    <p>这是一个段落</p>
+    <br> （换行）
+    <hr> （水平线）
+    <!-- 这是注释 -->
+</div>
+<div id="d2">
+    <h1>二：文本格式化（Formatting）</h1>
+    <b>粗体文本</b><br>
+    <code>计算机代码</code><br>
+    <em>强调文本</em><br>
+    <i>斜体文本</i><br>
+    <kbd>键盘输入</kbd><br>
+    <pre>预格式化文本</pre><br>
+    <small>更小的文本</small><br>
+    <strong>重要的文本</strong><br>
+    <abbr> （缩写）</abbr><br>
+        <address> （联系信息）</address><br>
+         <bdo dir="rtl"> （文字方向）</bdo><br>
+         <blockquote> （从另一个源引用的部分）</blockquote><br>
+         <cite> （工作的名称）</cite><br>
+         <del> （删除的文本）</del><br>
+         <ins> （插入的文本）</ins><br>
+         <sub> （下标文本）</sub><br>
+     <sup> （上标文本）<br></sup>
+</div>
+<div id="d3">
+    <h1>三：链接（Links）</h1>
+    普通的链接：<a href="http://www.example.com/">链接文本</a><br>
+    图像链接： <a href="http://www.example.com/"><img src="URL" alt="替换文本"></a><br>
+    邮件链接： <a href="mailto:webmaster@example.com">发送e-mail</a><br>
+    书签：<a id="tips">提示部分</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tips">跳到提示部分</a>
+    图片（Images）：
+    <img src="URL" alt="替换文本" height="42" width="42">
+    样式/区块（Styles/Sections）：
+
+    <style type="text/css">     h1 {color:red;}      p {color:blue;}     </style>
+    <div>文档中的块级元素</div>
+    <span>文档中的内联元素</span>
+</div>
+<div id="d4">
+    <h1>四：列表和表格</h1>
+    <ul><li>无序列表1</li><li>无序列表2</li>
+    </ul>
+    <ol><li>有序列表第一项</li><li>有序列表第二项</li>
+    </ol>
+    <dl><dt>定义列表1</dt>
+        <dd>描述内容 1</dd>
+        <dt>定义列表2</dt>
+        <dd>描述内容 2</dd>
+    </dl>
+    <table border="1">
+        <tr><th>表格标题1</th>
+            <th>表格标题2</th>
+        </tr>
+        <tr><td>表格数据1</td>
+            <td>表格数据2</td>
+        </tr>
+    </table>
+</div>
+<div id="d5">
+    <h1>五：框架与表单</h1>
+    <iframe src="./html5/IFrame.html" width="880" height="500"></iframe>
+    <form action="Form.html" method="post">
+        文本输入框：<input type="text" name="email" size="40" maxlength="50"><br>
+        密码框：<input type="password"><br>
+        复选框：Java<input type="checkbox" checked="checked">HTML5<input type="checkbox">JSP<input type="checkbox">C#<input type="checkbox"><br>
+        单选框：男<input type="radio" checked="checked" name="sex">女<input type="radio" name="sex"><br>
+        提交按钮：<input type="submit" value="提交"><br>
+        重置按钮：<input type="reset" value="重置"><br>
+        隐藏按钮：<input type="hidden"><br>
+        下拉列表：<select>
+            <option>苹果</option>
+            <option selected="selected">香蕉</option>
+            <option>樱桃</option>
+        </select><br>
+        文本域：<textarea name="comment" rows="6" cols="20"></textarea>
+    </form>
+</div>
+    <h1>六：实体（Entities）</h1>
+    <p>&lt; 等同于 <    &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+        &gt; 等同于 >   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+        &#169; 等同于 ©
+    </p>
+</div>
+</body>
+</html>

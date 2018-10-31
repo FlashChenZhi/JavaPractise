@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Window 对象应用</title>
+</head>
+<body>
+    <p id="tim"></p>
+    <select id="slt1" onchange="allCity()"></select>
+    <select id="slt2"></select><br/>
+    <button value="加载新文档" onclick="newDoc()">加载新文档</button>
+    <button value="返回上一页" onclick="goBack()">返回上一页</button>
+    <button value="跳转下一页" onclick="forward()">跳转下一页</button>
+<div>
+    <p>Window 对象弹窗</p>
+    <input type="button" onclick="warn()" value="警告框" />
+    <p id="p1"></p>
+    <button onclick="msg()">消息框</button><br/><br/>
+    <button onclick="hint()">提示框</button>
+    <p id="p2"></p>
+    <p>单击按钮每3秒出现一个“Hello”警告框</p>
+    <p>再次点击警告框，经过3秒出现新的警告框，这将一直执行 ...</p>
+    <button onclick="myTime()">定时弹框</button><button onclick="stopTime()">停止时间</button>
+</div>
+</body>
+<script>
+    function warn() {
+        alert("你好，我是一个警告框！");
+    }
+    function msg() {
+        var m;
+        var btn=confirm("按下按钮？！");
+        if(btn==true){
+            m="你按下了\"确定\"按钮!";
+        }else{
+            m="你按下了\"取消\"按钮!";
+        }
+        document.getElementById("p1").innerHTML=m;
+    }
+    function hint() {
+        var x;
+        var name=prompt("请输入你的名字");
+        if(name!=null && name!=""){
+            x="你好！"+name+"\t今天天气怎么样？";
+            document.getElementById("p2").innerHTML=x;
+        }
+    }
+    function myTime(){
+        setInterval(function () {
+            alert("你好！")
+        },5000)
+    }
+</script>
+<script>
+   var timer=setInterval(
+        function myTimer(){
+           document.getElementById("tim").innerHTML = new Date().toLocaleTimeString();
+        },1000
+    );
+   function stopTime() {
+       clearInterval(timer);
+   }
+</script>
+<script>
+    var city = new Array;
+    city['江苏'] = ['南京', '连云港', '苏州', '镇江'];
+    city['山东'] = ['青岛', '烟台', '济南','泰宁'];
+    city['湖南'] = ['长沙', '株洲', '湘潭', '岳阳'];
+    city['广东'] = ['广州', '珠海', '深圳','惠州'];
+    city['江西'] = ['南昌', '萍乡', '景德镇', '上饶'];
+    city['浙江'] = ['杭州', '宁波', '温州','金华'];
+    function allCity() {
+        var slt1=document.getElementById("slt1");
+        //这里注意遍历数组的写法
+        for( i in city){
+            slt1.add(new Option(i,i),null);
+        }
+        addOption();
+    }
+    function addOption() {
+        var slt1=document.getElementById("slt1").value;
+        var slt2=document.getElementById("slt2");
+        slt2.length=0;
+        if(slt1!=""){
+            for( i in city[slt1]){
+                slt2.add(new Option(city[slt1][i],city[slt1][i]),null);
+            }
+        }else if(slt1=="请选择省份"){
+            slt2.length=0;
+            slt2.add(new Option("请选择城市","请选择城市"),null);
+        }
+    }
+    window.onload=allCity();
+</script>
+<script>
+    /*      location.href 属性返回当前页面的 URL     */
+    document.write(location.href);
+    /*      location.pathname 属性返回 URL 的路径名   */
+    document.write(location.pathname);
+    /*      location.assign() 方法加载新的文档        */
+
+</script>
+<script>
+    function newDoc()
+    {
+        window.location.assign("http://www.w3cschool.cc")
+    }
+</script>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+    function forward() {
+        window.history.forward();
+    }
+</script>
+</html>

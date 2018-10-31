@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/mystyle.css">
+    <title>链接属性和表格CSS样式</title>
+</head>
+<body>
+    <hr>第一部分：链接属性<hr/>
+    <a href="http://www.runoob.com/" target="_blank">菜鸟教程(target="_blank":该属性表示在新窗口中打开)</a><br>
+    <a href="http://www.sina.com/" target="_parent">新浪网站(target="_parent":该属性表示在父框架集中打开)</a><br>
+    <a href="http://www.baidu.com/" target="_top">百度一下(target="_top":该属性表示在整个窗口中打开)</a><br>
+    <p><b> link 标签定义了文档与外部资源之间的关系 (一般定义在头部：head标签中)</b></p>
+    <hr>第二部分：表格相关属性<hr/>
+    <table border="1">
+        <tr>
+            <th>表头标签1(th)</th><th>表头标签2(th)</th><th>表头标签3(th)</th>
+        </tr>
+        <tr>
+            <td>第2行第1列</td><td>第2行第2列</td><td>第2行第3列</td>
+        </tr>
+        <tr>
+            <td>第3行第1列</td><td>第3行第2列</td><td>第3行第3列</td>
+        </tr>
+        <tr align="center" style="background: #d76666;border: #505260 50px solid"><td colspan="3">第4行合并3列(文字居中)</td></tr>
+    </table>
+    <hr>第三部分：CSS样式属性<hr/>
+    <p><font size="5" >详情请参考文件：css/mystyle.css</font></p>
+    <p>图像映射和图形创建</p>
+  <!--  <map name="planetmap">
+        <img src="../images/picture/sun.gif" width="145" height="126" alt="点击文字" usemap="#planetmap">
+        <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.html">
+        <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.html">
+        <area shape="circle" coords="124,58,8" alt="Venus" href="venus.html">
+    </map>
+    -->
+    <h3>矩形：(左上角顶点坐标为(x1,y1)，右下角顶点坐标为(x2,y2)) </h3>
+    <area shape="rect" coords="0,0,82,126" href="http://www.sina.com/">
+    <h3>圆形：(圆心坐标为(X1,y1)，半径为r)  </h3>
+    <area shape="circle" coords="90,58,3" href="http://www.baidu.com/">
+    <h3>多边形：(各顶点坐标依次为(x1,y1)、(x2,y2)、(x3,y3) ......)  </h3>
+    <area shape="poly" coords="8,10,12,16,20,28" href="http://www.sina.com/">
+
+
+
+
+</body>
+</html>

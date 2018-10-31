@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML 脚本标签</title>
+</head>
+<body>
+<header style="text-align: center"><b>JavaScript 使 HTML 页面具有更强的动态和交互性</b></header>
+    <script>
+        document.write("你好！Script脚本<br>"+"<p>这是在脚本中插入的一个段落标签</p>");
+
+    </script>
+<p id="content">开始我的第一个 JavaScript </p>
+<button type="button" onclick="func()">点击</button>
+<script>
+    var x=document.getElementById("content");
+    function func() {
+        x.innerHTML="欢迎前来学习脚本语言！";
+        x.style.color="#f00000";
+    }
+</script>
+<p>如果你的浏览器不支持JavaScript脚本运行，将会显示‘noscript’标签中的文字信息</p>
+<noscript>非常抱歉！你的浏览器不支持JavaScript脚本运行</noscript>
+</body>
+</html>

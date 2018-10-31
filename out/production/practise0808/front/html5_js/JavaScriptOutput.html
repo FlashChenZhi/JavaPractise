@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript输出方式</title>
+</head>
+<body>
+<h3>第一个JS页面的第一个段落</h3>
+<p id="p1"></p>
+<div id="demo1">
+</div>
+<div id="demo2">
+    <p id="p2">第一个JS页面的第二个段落</p>
+    <button onclick="displayDate()" >显示时间</button>
+</div>
+<div>
+    <p id="p3">
+    </p>
+</div>
+</body>
+<script>
+    var sum, x=12,y=3;
+    document.getElementById("p3").innerHTML="显示结果：x * y = "+( sum = x*y );
+</script>
+<script>
+    window.alert("弹出警告框");
+    document.getElementById("p1").innerHTML="使用 innerHTML 写入到 HTML 元素";
+</script>
+<script>
+    function displayDate() {
+        document.write(new Date());
+    }
+    // document.write("你好！\ 世界");
+    <!--
+        document.write("多行注释提醒您：您的浏览器支持JavaScript脚本!");
+     -->
+</script>
+<script>
+    a=10;
+    b=6;
+    c=a*b;
+    console.log("控制台显示结果："+c);
+    function varTest() {
+        var x=3;            // 同样的变量!
+       // let y=5;
+        if(true){
+            var x=6;
+            // let y=2;
+            console.log("块或子块中的变量值x："+x);       //3
+            // console.log("块或子块中的变量值y："+y);    //2
+        }
+       console.log("函数中的变量值x："+x);                //3
+    //    console.log("函数中的变量值y："+y);             //5
+    //说明：let 声明的变量只在其声明的块或子块中可用，var声明的变量的作用域是整个封闭函数
+    //注意：但目前JavaScript 版本不支持 let 定义变量的使用
+    }
+</script>
+</html>

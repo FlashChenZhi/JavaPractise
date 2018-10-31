@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5与JavaScript</title>
+    <script src="../js/First.js"></script>
+</head>
+<script type="text/javascript">
+    //显示时间
+    function displayDate() {
+        var p=document.getElementById("demo");
+        p.innerHTML=new Date();
+    }
+    //改变图像 (可用三目运算符判断)
+    function changeImage() {
+        element=document.getElementById("myimage");
+        element.src=element.src.match("bulbon") ? "../../images/picture/pic_bulboff.gif" : "../../images/picture/pic_bulbon.gif";
+        // if(element.src.match("bulbon")){
+        //     element.src="../../images/picture/pic_bulboff.gif";
+        // }else{
+        //     element.src="../../images/picture/pic_bulbon.gif";
+        // }
+    }
+    //验证数字  (正则表达式)
+    function checkNumber() {
+        var number = document.getElementById("num").value;
+        if (isNaN(number)) {
+            alert("你输入的不是正确的数字！");
+        } else {
+            alert("你输入的数字为："+number);
+        }
+    }
+</script>
+<body>
+<h1>我的第一个 JavaScript 程序</h1>
+<div id="div1">
+    <p>外部导入 JavaScript 文件</p>
+    <button onclick="myFunction()">点击这里</button>
+</div>
+<p id="demo">这是一个段落</p>
+<button id="btn" onclick="displayDate()">显示日期</button>
+<p>点击灯泡就可以打开或关闭这盏灯</p>
+<img id="myimage" src="../../images/picture/pic_bulboff.gif" onclick="changeImage()" width="100" height="180"><br/>
+<p>请在文本框输入数字进行验证！</p><input id="num" type="text" > <button id="bt" onclick="checkNumber()">验证数字</button><br/>
+<script>
+    document.write("<p>这是用JavaScript书写的一个段落</p>")
+</script>
+<p>
+    您只能在 HTML 输出流中使用 <strong>document.write</strong>，
+    如果您在文档已加载后使用它（比如在函数中），会覆盖整个文档。
+</p>
+
+</body>
+</html>

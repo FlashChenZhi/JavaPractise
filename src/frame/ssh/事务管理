@@ -1,0 +1,55 @@
+                                                    事务管理
+一、事务管理的特性
+1.原子性(Atomicity)：要么都成功，要么都失败
+2.一致性(Consistency)
+3.隔离性(Isolation)
+4.持续性/永久性(Durability)
+
+二、SSH的配置事务管理的方式
+1. 非侵入式：就是指不需要修改一行java代码，只需要进行applicationContext.xml的配置，即可达到事务管理的效果
+2. 举例说明：修改配置文件 applicationContext.xml
+   <1>. 增加一个专门进行事务管理的bean
+   <!-- 配置事务管理器（声明式的事务） -->
+       <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+           <property name="sessionFactory" ref="sf"></property>
+       </bean>
+   <2>. 配置切面
+        <aop:config>
+             <aop:pointcut id="serviceMethod" expression="execution(* com.service.*.*(..))"/>
+             <aop:advisor pointcut-ref="serviceMethod" advice-ref="txadvice"/>
+        </aop:config>
+        <tx:advice id="txadvice" transaction-manager="transactionManager">
+                <tx:attributes>
+                    <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
+                    <tx:method name="del*" propagation="REQUIRED" rollback-for="Exception"/>
+                    <tx:method name="edit*" propagation="REQUIRED" rollback-for="Exception" />
+                    <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+                    <tx:method name="list*" propagation="REQUIRED" rollback-for="Exception"/>
+                </tx:attributes>
+            </tx:advice>
+    说明：* 表示返回任意类型
+          com.service.* 包名以com.service 开头的类的任意方法
+          (..) 任意的参数类型
+
+3.注解方式配置事务管理 (以上述例子为依据)
+    步骤1：去掉：<tx:advice> 和 <aop:config >配置
+    步骤2：保留：<bean id="transactionManager" ...>
+    步骤3：添加：<tx:annotation-driven transaction-manager="transactionManager"/> 用于进行注解扫描
+    步骤4：在实体类对应方法上面添加：@Transactional(propagation=Propagation.REQUIRED,rollbackForClassName="Exception")
+
+三、关于MySql数据的事务说明
+1. 在Mysql中，只有当表的类型是INNODB的时候，才支持事务；所以需要把表的类型设置为INNODB,否则无法观察到事务
+2. 检查是否innodb已开启的方法：(仅支持5.1、5.5版本上使用)
+   (1).执行命令：SHOW variables like 'have_%';
+   (2).显示结果中的have_innodb：YES 表示开启成功，NO或DISABLED，或不存在均表示未启动
+   (3).停止mysql ：(执行命令)net stop mysql
+   (4).定位到D:\tools\MYSQL\mysql-5.1.57-win32\data 目录下，找到这3个文件
+        ib_logfile0
+        ib_logfile1
+        ibdata1
+        备份后，删除掉
+   (5).修改配置文件：打开文件：D:\tools\MYSQL\mysql-5.1.57-win32\my.ini
+       添加一行：default-storage-engine=InnoDB   (若存在default-storage-engine=MyISAM，则在该语句前面添加# 将内容注释掉)
+   (6).启动mysql：(执行命令) net start
+   (7).再检测：再次执行步骤一的命令
+   注意：D:\tools\MYSQL\mysql-5.1.57-win32 是我的安装目录，请自行调整

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Attributes事件属性</title>
+    <script type="text/javascript">
+        function printmsg() {
+            alert("文档正在打印中...")
+        }
+    </script>
+</head>
+<body onafterprint="printmsg()">
+<h1>打印文档</h1>
+<p><b>提示：</b> 快捷键， 如 Ctrl+P 设置打印页面</p>
+<p><b>注意：</b> 目前只有 Internet Explorer 和 Firefox 浏览器支持 onafterprint 事件属性</p>
+<p><b>注意：</b> 在 IE 浏览器中, onafterprint 属性在打印对话框之前执行Javascript而不是之后</p>
+<p><a href="http://www.runoob.com/tags/html-keyboardshortcuts.html"><font style="text-decoration:underline">键盘快捷键</font></a> </p>
+</body>
+</html>

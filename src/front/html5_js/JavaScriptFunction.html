@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScriptFunction--JS 函数</title>
+<script type="text/javascript">
+     void func();
+     javascript:void func();
+</script>
+    <script type="text/javascript">
+        function getValue() {
+            var a,b,c;
+            a=void(b=5,c=7);
+            document.getElementById("p1").innerHTML="a="+a+" "+"  b="+b+"  c="+c;
+        }
+    </script>
+
+</head>
+<body>
+<a href="javascript:void(0)">单击此处什么也不会发生</a>
+<p>点击以下链接查看结果：</p>
+<a href="javascript:void(alert('Warning!!!'))">点我</a>
+<p>点击以下按钮查看结果：</p>
+    <input type="button" value="点我" onclick="getValue();" /><br/>
+<p id="p1"></p>
+<p>查找数组中最大的数</p>
+<p id="p2"></p>
+</body>
+<script type="text/javascript">
+    x = findMax(1, 123, 500, 115, 44, 88);
+    function findMax() {
+        var i,max=arguments[0];
+        if(arguments.length<2){
+            return max;
+        }
+        for(i=0;i<arguments.length;i++){
+            if(arguments[i]>max){
+                max=arguments[i];
+            }
+        }
+        return max;
+    }
+    document.getElementById("p2").innerHTML=x;
+</script>
+</html>

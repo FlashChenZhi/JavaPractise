@@ -1,0 +1,25 @@
+
+一、Struts2 是基于MVC的WEB框架
+1.创建步骤：
+(1).创建JavaWeb工程，导入开发Struts2应用需要使用到的jar文件 (至少12个：参考jar文件路径：/resource/struts/lib)
+(2).创建模型层和视图层：实体类文件xxx.java， 页面文件xxx.jsp
+(3).创建控制层：Action 文件  (Struts2中action要实现com.opensymphony.xwork2.Action的接口)
+(4).编写Struts2.xml的配置文件   (Struts2默认的配置文件为struts.xml ，该文件需要存放在WEB-INF/classes下)
+    I. 配置 package 元素：name属性必须存在，namespace为可选项，extends必须继承“struts-default”
+    II.配置 action  元素：class属性指向action控制层文件，name属性则为该文件名(可自定义)
+    III.配置 result 元素：name属性通常指向Action控制层映射方法的返回值，type属性指定结果类型   (转发/重定向)
+(5).重启Tomcat 服务器，输入指定的IP地址：端口号/项目名称/映射文件名       (例如：http://127.0.0.1:8080/struts/showProduct)
+
+2.实现思路：
+(1). 所有的访问都会被web.xml中配置的Struts 的 Filter所拦截
+(2). 拦截之后，就进入struts的工作流程
+(3). 访问的地址是/index,根据struts按照 struts.xml中的配置，服务端跳转到index.jsp
+(4). 显示index.jsp的内容
+
+3.中文乱码问题    (3部分组成 )
+(1). jsp提交数据的时候，必须是UTF-8编码的
+(2). struts拿到数据后进行UTF-8解码
+(3). 服务端跳转到jsp进行显示的时候，要指定浏览器使用UTF-8进行显示
+说明：UTF-8可以换成GBK或者GB2312，但是必须统一，不能混用
+
+

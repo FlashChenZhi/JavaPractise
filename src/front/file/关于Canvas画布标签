@@ -1,0 +1,36 @@
+                                                                关于Canvas画布标签
+一、绘制圆形
+1.方法一：arc(x,y,r,start,stop)
+(1).说明：
+    x：圆心在x轴上的坐标
+    y：圆心在y轴上的坐标
+    r：半径长度
+    start：起始角度，以弧度表示，圆心平行的右端为0度
+    stop：结束角度，以弧度表示
+    注意：Math.PI表示180°，画圆的方向是顺时针
+
+2.方法二：制作径向渐变时
+    createRadialGradient(x , y , r , x1 , y1 , r1) 括号内参数含义如下:
+(1).说明：
+    x: 渐变的开始圆的 x 坐标
+    y: 渐变的开始圆的 y 坐标
+    r: 开始圆的半径
+    x1: 渐变的结束圆的 x 坐标
+    y1: 渐变的结束圆的 y 坐标
+    r1: 结束圆的半径
+    注意：(x, y, r) (x1,y1,r1)分别可以代表一个圆形的特征
+
+3.画布的滚动条实现 (参考代码如下)
+    window.onload = function(){
+      var can = document.getElementById('myCanvas');
+      var pro = can.innerHTML.substring(0,can.innerHTML.length-1);
+      console.log(pro);
+      var cxt = can.getContext('2d');
+    }
+
+4.各种半圆的绘制 (参考代码如下)
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(95,50,40,0,-1*Math.PI,Math.PI);
+    ctx.stroke();

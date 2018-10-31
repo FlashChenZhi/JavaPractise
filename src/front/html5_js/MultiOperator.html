@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多元运算符</title>
+    <script>
+        function multiOperator(p){
+            var a=5,b=12;
+            var val=document.getElementById("p1");
+            return val.innerHTML=p>1?p<b?p>b:p=6:p=3;
+        }
+    </script>
+    <script type="text/javascript">
+        var a = [1,2,3];
+        var b = "hello";
+        var obj = new Object();
+        var d;
+        console.log(true || 10);        //第一个操作数是true，结果是第一个操作，也就是true
+        console.log(false || b);        //第一个操作数是false，结果是第二个操作数b
+        console.log(100 || false);      //第一个操作数是100，结果100
+        console.log(undefined || 9);    //第一个操作数是undefined转false，结果9
+        console.log(NaN || false);      //第一个操作数是NaN转false，结果第二个操作数
+        console.log(null || a);         //第一个操作数是null转false，结果a
+        console.log('' || false);       //第一个操作数是空串转false，结果第二操作数
+        console.log(0 || 100);          //结果是100
+        console.log(5 || 100);          //5
+        console.log(a || b);            //a
+        console.log(obj || 200);        //obj
+    </script>
+    <script>
+        function speak() {
+            var say;
+            var time = new Date().getHours();
+            var week=new Date().getDay();
+            var p1 = document.getElementById("p2");
+            if (time > 5 && time <= 8) {
+                say = "Good Morning！";
+            } else if (time > 8 && time <= 12) {
+                say = "上午好！😄";
+            } else if (time > 12 && time <= 18) {
+                say = "下午好！";
+            } else if (time > 18 && time <= 23) {
+                say = "晚上好！🌙";
+            } else {
+                say = "好好休息吧！💤";
+            }
+            var x;
+            switch (week){
+                case 0:x="今天是星期日  ";
+                    break;
+                case 1:x="今天是星期一  ";
+                    break;
+                case 2:x="今天是星期二  ";
+                    break;
+                case 3:x="今天是星期三  ";
+                    break;
+                case 4:x="今天是星期四  ";
+                    break;
+                // case 5:x="今天是星期五  ";
+                //     break;
+                case 6:x="今天是星期六  ";
+                    break;
+                default:x="明天就是周末啦！😄";
+            }
+            p1.innerHTML ="<font color='blue'>"+x+"</font>"+say;
+                var r = Math.random();
+                var p3 = document.getElementById("p3");
+                if (r >= 0.5) {
+                    p3.innerHTML = "<a href='http://www.sina.com'>新浪网</a>";
+                } else {
+                    p3.innerHTML = "<a href='http://www.baidu.com'>百度一下</a>";
+                }
+        }
+    </script>
+
+</head>
+<body onload="multiOperator(13)">
+    <p id="p1">点击这个按钮，获得基于时间的问候</p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+
+    <button onclick="speak()">点击这里</button>
+    <div id="div1">
+        <p id="p4"></p>
+    </div>
+</body>
+</html>

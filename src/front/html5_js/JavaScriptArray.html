@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScriptArray—JS数组对象</title>
+
+</head>
+<body>
+    <p>合并三个数组</p>
+    <p id="p1"></p>
+    <p id="p2">点击下面一系列按钮将实现数组的相关方法操作</p>
+    <button id="btn1" onclick="fruits()">显示所有水果</button>
+    <button id="btn2" onclick="reserve()">反转所有水果</button>
+    <button id="btn3" onclick="select()">选中指定水果</button><br/><br/>
+    <button id="btn4" onclick="append()">首部添加水果</button>
+    <button id="btn5" onclick="insert()">指定添加水果</button>
+    <button id="btn6" onclick="add()">尾部添加水果</button><br/><br/>
+    <button id="btn7" onclick="shift()">删除首部水果</button>
+    <button id="btn8" onclick="remove()">删除尾部水果</button>
+    <button id="btn9" onclick="desc()">字母排序水果</button>
+</body>
+<script>
+    var first=["Wade","Anthony","James","Paul"];
+    var second=["Cristiano","leon","Costa","Lam","Andre"];
+    var thrid=["Jack","Smith","David"];
+    var array=first.concat(second,thrid);
+    document.getElementById("p1").innerHTML=array;
+</script>
+<script>
+    /*      数组元素的显示+移除+添加操作     */
+    var num=["苹果","橘子","香蕉","菠萝","葡萄","甜瓜","黄桃","龙眼"];
+    var p2=document.getElementById("p2");
+    function fruits() {
+        p2.innerHTML=num.join();
+    };
+    function remove() {
+        p2.innerHTML=num.pop();
+    }
+    function add() {
+        p2.innerHTML=num.push("西瓜");
+    }
+    function reserve() {
+        p2.innerHTML=num.reverse();
+    }
+    function shift() {
+        p2.innerHTML=num.shift();
+    }
+    function select() {
+        p2.innerHTML=num.slice(2,6);
+    }
+    function desc() {
+        p2.innerHTML=num.sort();
+    }
+    function insert() {
+        p2.innerHTML=num.splice(2,0,"柠檬");
+    }
+    function append() {
+        num.unshift("芒果","草莓");
+        p2.innerHTML=num;
+    }
+</script>
+</html>

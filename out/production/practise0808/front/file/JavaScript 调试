@@ -1,0 +1,6 @@
+                                                JavaScript 调试
+一、JavaScript 调试方法
+1.JavaScript 调试工具：很多浏览器都内置了调试工具
+2.console.log() 方法：使用 console.log() 方法在调试窗口上打印 JavaScript值
+3.设置断点：在调试窗口设置 JavaScript 代码断点，将会停止执行，以便于检查JavaScript 变量的值
+4.debugger 关键字：用于停止执行 JavaScript，并调用调试函数
